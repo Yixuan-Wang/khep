@@ -1,6 +1,13 @@
-import marimo as mo
+import marimo
 
-app = mo.App()
+app = marimo.App()
+
+
+@app.cell
+def _():
+    import marimo as mo
+    return
+
 
 @app.cell
 def _():
@@ -11,3 +18,7 @@ def _():
     else:
         mo.output.replace(render_bar_chart(data.value))
     return
+
+
+if __name__ == "__main__":
+    app.run()

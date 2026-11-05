@@ -5,12 +5,14 @@ Marimo provides interactive widgets (UI elements) and layouts to create interact
 ## Fundamentals
 
 - Widgets trigger cell updates when their values change. No need for explicit callbacks.
-- Widget values are accessed through `.value` attribute, but cannot be accessed in the same cell where the widget is declared.
+- Widget values are accessed through the `.value` attribute, but cannot be accessed in the same cell where the widget is declared.
 - Use `mo.hstack()`, `mo.vstack()`, and `mo.tabs()` to create layouts for better organization of widgets.
 
 ## References
 
 ### Widgets
+
+Some of the most useful functions and their partial arguments:
 
 - `mo.ui.button(value=None, kind='primary')`
 - `mo.ui.run_button(label=None, tooltip=None, kind='primary')`
@@ -20,15 +22,15 @@ Marimo provides interactive widgets (UI elements) and layouts to create interact
 - `mo.ui.file(label='', multiple=False, full_width=False)`
 - `mo.ui.number(value=None, label=None, full_width=False)`
 - `mo.ui.radio(options, value=None, label=None, full_width=False)`
-- `mo.ui.refresh(options: List[str], default_interval: str)`
+- `mo.ui.refresh(options: list[str], default_interval: str)`
 - `mo.ui.slider(start, stop, value=None, label=None, full_width=False, step=None)`
 - `mo.ui.range_slider(start, stop, value=None, label=None, full_width=False, step=None)`
-- `mo.ui.table(data, columns=None, selection="multi", sortable=True, filterable=True)`
+- `mo.ui.table(data, columns=None, selection='multi', sortable=True, filterable=True)`
 - `mo.ui.text(value='', label=None, full_width=False)`
 - `mo.ui.text_area(value='', label=None, full_width=False)`
 - `mo.ui.data_explorer(df)`
 - `mo.ui.dataframe(df)`
-- `mo.ui.plotly(plotly_figure)`
+- `mo.ui.altair_chart(chart: AltairChartType)`
 - `mo.ui.tabs(elements: dict[str, mo.ui.Element])`
 - `mo.ui.array(elements: list[mo.ui.Element])`
 - `mo.ui.form(element: mo.ui.Element, label='', bordered=True)`

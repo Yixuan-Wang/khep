@@ -16,7 +16,7 @@ with app.setup():
 
 @app.cell
 def _():
-   return
+    return
 
 
 if __name__ == "__main__":

@@ -1,8 +1,7 @@
-import marimo as mo
-import altair as alt
-import polars as pl
+import marimo
 
-app = mo.App()
+app = marimo.App()
+
 
 @app.cell
 def _():
@@ -11,15 +10,16 @@ def _():
     import polars as pl
     return
 
+
 @app.cell
 def _():
     # Load dataset
-    weather = pl.read_csv("https://raw.githubusercontent.com/vega/vega-datasets/refs/heads/main/data/weather.csv")
-    weather_dates = weather.with_columns(
+    _weather = pl.read_csv("https://raw.githubusercontent.com/vega/vega-datasets/refs/heads/main/data/weather.csv")
+    _weather_dates = _weather.with_columns(
         pl.col("date").str.strptime(pl.Date, format="%Y-%m-%d")
     )
     _chart = (
-        alt.Chart(weather_dates)
+        alt.Chart(_weather_dates)
         .mark_point()
         .encode(
             x="date:T",
@@ -27,16 +27,17 @@ def _():
             color="location",
         )
     )
-    return
-
-@app.cell
-def _():
     chart = mo.ui.altair_chart(_chart)
     chart
     return
+
 
 @app.cell
 def _():
     # Display the selection
     chart.value
     return
+
+
+if __name__ == "__main__":
+    app.run()

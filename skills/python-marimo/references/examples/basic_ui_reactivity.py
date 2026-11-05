@@ -1,9 +1,7 @@
-import marimo as mo
-import altair as alt
-import polars as pl
-import numpy as np
+import marimo
 
-app = mo.App()
+app = marimo.App()
+
 
 @app.cell
 def _():
@@ -13,20 +11,22 @@ def _():
     import numpy as np
     return
 
+
 @app.cell
 def _():
     n_points = mo.ui.slider(10, 100, value=50, label="Number of points")
     n_points
     return
 
+
 @app.cell
 def _():
-    x = np.random.rand(n_points.value)
-    y = np.random.rand(n_points.value)
+    _x = np.random.rand(n_points.value)
+    _y = np.random.rand(n_points.value)
 
-    df = pl.DataFrame({"x": x, "y": y})
+    _df = pl.DataFrame({"x": _x, "y": _y})
 
-    chart = alt.Chart(df).mark_circle(opacity=0.7).encode(
+    _chart = alt.Chart(_df).mark_circle(opacity=0.7).encode(
         x=alt.X('x', title='X axis'),
         y=alt.Y('y', title='Y axis')
     ).properties(
@@ -35,5 +35,9 @@ def _():
         height=300
     )
 
-    chart
+    _chart
     return
+
+
+if __name__ == "__main__":
+    app.run()

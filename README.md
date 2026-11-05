@@ -15,6 +15,6 @@ npx skills add https://github.com/Yixuan-Wang/khep
 
 ## Documentation
 
-| Skill | Manual? | Description |
-| --- | --- | --- |
-| [python-marimo](skills/python-marimo/SKILL.md) | ✔️ | Guides on how to handle a [marimo](https://marimo.io/) Python notebook. |
+| Skill | Description |
+| --- | --- |
+| [python-marimo](skills/python-marimo/SKILL.md) | Edit and run marimo notebooks. |

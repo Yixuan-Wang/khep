@@ -1,8 +1,7 @@
-import marimo as mo
-import polars as pl
-import altair as alt
+import marimo
 
-app = mo.App()
+app = marimo.App()
+
 
 @app.cell
 def _():
@@ -11,10 +10,12 @@ def _():
     import altair as alt
     return
 
+
 @app.cell
 def _():
     iris = pl.read_csv("hf://datasets/scikit-learn/iris/Iris.csv")
     return
+
 
 @app.cell
 def _():
@@ -36,11 +37,12 @@ def _():
     mo.hstack([species_selector, x_feature, y_feature])
     return
 
+
 @app.cell
 def _():
-    filtered_data = iris if species_selector.value == "All" else iris.filter(pl.col("Species") == species_selector.value)
+    _filtered_data = iris if species_selector.value == "All" else iris.filter(pl.col("Species") == species_selector.value)
 
-    chart = alt.Chart(filtered_data).mark_circle().encode(
+    _chart = alt.Chart(_filtered_data).mark_circle().encode(
         x=alt.X(x_feature.value, title=x_feature.value),
         y=alt.Y(y_feature.value, title=y_feature.value),
         color='Species'
@@ -50,5 +52,9 @@ def _():
         height=400
     )
 
-    chart
+    _chart
     return
+
+
+if __name__ == "__main__":
+    app.run()
