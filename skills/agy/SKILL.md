@@ -8,14 +8,22 @@ description: Use Google Gemini models through the Antigravity CLI (agy).
 Use the following Antigravity CLI (`agy`) command to invoke Google Gemini models non-interactively.
 
 ```sh
+# Read only
 agy -p "$PROMPT" --model $MODEL --effort $EFFORT --settings '{"permissions":{"allow":["read_file(*)","read_url(*)"]}}'
+
+# Read, write, and run commands (except rm)
+agy -p "$PROMPT" --model $MODEL --effort $EFFORT --settings '{"permissions":{"allow":["read_file(*)","write_file(*)","command(*)"],"deny":["command(rm)"]}}'
+
+# All permissions (unsafe)
+agy -p "$PROMPT" --model $MODEL --effort $EFFORT --dangerously-skip-permissions
 ```
 
 ## Instructions
 
 - Available effort levels are `low`, `medium`, and `high`.
 - Use `@` syntax to mention files and directories; line range syntax is also supported.
-- For writing files, interacting with websites, running commands, and using MCP, check [permissions.md](references/permissions.md).
+- Prefer using permissive permissions paired with clear restrictions written in prompt.
+- For complex permissions including interacting with websites, running commands, and using MCP, check [permissions.md](references/permissions.md).
   An empty response may indicate permission denial.
 - For multi-turn usage, `--output-format` needs to be `json`. See [multi-turn.md](references/multi-turn.md).
 
