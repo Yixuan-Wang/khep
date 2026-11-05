@@ -17,4 +17,5 @@ npx skills add https://github.com/Yixuan-Wang/khep
 
 | Skill | Description |
 | --- | --- |
+| [agy](skills/agy/SKILL.md) | Use Google Gemini models through the Antigravity CLI (agy). |
 | [python-marimo](skills/python-marimo/SKILL.md) | Edit and run marimo notebooks. |
